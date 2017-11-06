@@ -25,7 +25,7 @@ exports.buildHeatMap = function(args, res, next) {
   
 }
 
-exports.registerPosition = function(args, res, next) {
+exports.registerLocation = function(args, res, next) {
   /**
    * parameters expected in the args:
   * body (Body)
