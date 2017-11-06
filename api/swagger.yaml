@@ -8,6 +8,7 @@ info:
     email: pafmon@gmail.com
 paths:
   /positions:
+    x-swagger-router-controller : "Default"
     post:
       summary: Register a position in the server
       operationId: registerPosition
@@ -27,19 +28,19 @@ paths:
           type: object
           properties:
             latitude:
-              description: "Position latitude (with 5 digits precision)"
+              description: "Position latitude"
               example    : 37.39253 
               type       : number
-              multipleOf : 0.00001
-            longitud:
-              description: "Position longitude (with 5 digits precision)"
+            longitude:
+              description: "Position longitude"
               example    : -5.99407
               type       : number
-              multipleOf : 0.00001
             timestamp:
               type: string
               format: date-time
+            
   /heatmaps:
+    x-swagger-router-controller : "Default"
     get:
       summary: Obtain a heatmap
       operationId: buildHeatMap
@@ -63,18 +64,16 @@ paths:
           description: "Area center latitude (with 5 digits precision), e.g. '37.39253'"
           required: true
           type       : number
-          multipleOf : 0.00001
         - name: area.center.longitude
           in: query
           description: "Area center latitude (with 5 digits precision), e.g. '-5.99407'"
           required: true
           type       : number
-          multipleOf : 0.00001
         - name: area.radius
           in: query
           description: "Area radius in meters (max 10 km), e.g. '1000'"
           required: true
-          type       : number
+          type       : integer
           minimum   : 1
           maximum   : 10000
       responses:
@@ -89,11 +88,9 @@ paths:
                   description: "Position latitude (with 5 digits precision)"
                   example    : 37.39253 
                   type       : number
-                  multipleOf : 0.00001
-                longitud:
+                longitude:
                   description: "Position longitude (with 5 digits precision)"
                   example    : -5.99407
                   type       : number
-                  multipleOf : 0.00001
                 intensity:
                   type: integer
