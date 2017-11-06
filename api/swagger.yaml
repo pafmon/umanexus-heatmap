@@ -1,0 +1,99 @@
+swagger: '2.0'
+info:
+  description: |
+    Initial version for server centric API
+  version: "1.0.0"
+  title: umanexus - Heatmap
+  contact:
+    email: pafmon@gmail.com
+paths:
+  /positions:
+    post:
+      summary: Register a position in the server
+      operationId: registerPosition
+      responses:
+        '405':
+          description: Invalid position object
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: Position to be registered
+        required: true
+        schema:
+          type: object
+          properties:
+            latitude:
+              description: "Position latitude (with 5 digits precision)"
+              example    : 37.39253 
+              type       : number
+              multipleOf : 0.00001
+            longitud:
+              description: "Position longitude (with 5 digits precision)"
+              example    : -5.99407
+              type       : number
+              multipleOf : 0.00001
+            timestamp:
+              type: string
+              format: date-time
+  /heatmaps:
+    get:
+      summary: Obtain a heatmap
+      operationId: buildHeatMap
+      produces:
+      - application/json
+      parameters:
+        - name: period.from
+          in: query
+          description: "Relative Time stamp (in RFC3339 / ISO 8601 format), e.g. '2017-11-02T12:00:00'"
+          required: true
+          type: string
+          format: date-time
+        - name: period.to
+          in: query
+          description: "Relative Time stamp (in RFC3339 / ISO 8601 format), e.g. '2017-11-02T14:00:00'"
+          required: true
+          type: string
+          format: date-time
+        - name: area.center.latitude
+          in: query
+          description: "Area center latitude (with 5 digits precision), e.g. '37.39253'"
+          required: true
+          type       : number
+          multipleOf : 0.00001
+        - name: area.center.longitude
+          in: query
+          description: "Area center latitude (with 5 digits precision), e.g. '-5.99407'"
+          required: true
+          type       : number
+          multipleOf : 0.00001
+        - name: area.radius
+          in: query
+          description: "Area radius in meters (max 10 km), e.g. '1000'"
+          required: true
+          type       : number
+          minimum   : 1
+          maximum   : 10000
+      responses:
+        200:
+          description: successful operation
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                latitude:
+                  description: "Position latitude (with 5 digits precision)"
+                  example    : 37.39253 
+                  type       : number
+                  multipleOf : 0.00001
+                longitud:
+                  description: "Position longitude (with 5 digits precision)"
+                  example    : -5.99407
+                  type       : number
+                  multipleOf : 0.00001
+                intensity:
+                  type: integer
