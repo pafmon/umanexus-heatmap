@@ -9,14 +9,14 @@ info:
 host: "umanexus.herokuapp.com"
 basePath: "/api/v1"
 paths:
-  /positions:
+  /locations:
     x-swagger-router-controller : "Default"
     post:
-      summary: Register a position in the server
-      operationId: registerPosition
+      summary: Register a Location in the server
+      operationId: registerLocation
       responses:
         '405':
-          description: Invalid position object
+          description: Invalid Location object
       consumes:
       - application/json
       produces:
@@ -24,17 +24,17 @@ paths:
       parameters:
       - in: body
         name: body
-        description: Position to be registered
+        description: Location to be registered
         required: true
         schema:
           type: object
           properties:
             latitude:
-              description: "Position latitude"
+              description: "Location latitude"
               example    : 37.39253 
               type       : number
             longitude:
-              description: "Position longitude"
+              description: "Location longitude"
               example    : -5.99407
               type       : number
             timestamp:
@@ -87,11 +87,11 @@ paths:
               type: object
               properties:
                 latitude:
-                  description: "Position latitude (with 5 digits precision)"
+                  description: "Location latitude (with 5 digits precision)"
                   example    : 37.39253 
                   type       : number
                 longitude:
-                  description: "Position longitude (with 5 digits precision)"
+                  description: "Location longitude (with 5 digits precision)"
                   example    : -5.99407
                   type       : number
                 intensity:
