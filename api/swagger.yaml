@@ -6,6 +6,8 @@ info:
   title: umanexus - Heatmap
   contact:
     email: pafmon@gmail.com
+host: "umanexus.herokuapp.com"
+basePath: "/api/v1"
 paths:
   /positions:
     x-swagger-router-controller : "Default"
