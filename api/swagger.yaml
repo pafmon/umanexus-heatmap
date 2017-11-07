@@ -3,7 +3,7 @@ info:
   description: |
     Initial version for server centric API
     <br/>
-    <h1><a href="test">Showcase</a></h1>
+    <h3>See <a href="https://documenter.getpostman.com/view/359472/umanexus-heroku/77iahW9">API Showcase</a></h3>
     <br/>
   version: "1.0.0"
   title: umanexus - Heatmap
