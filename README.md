@@ -1,2 +1,3 @@
 # UMANEXUS - Heatmap
-Initial version for server centric API
+
+Initial version for server centric API for Heatmap app
