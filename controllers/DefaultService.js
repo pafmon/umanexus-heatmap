@@ -158,7 +158,7 @@ exports.registerLocation = function(args, res, next) {
   var location = {
     latitude: args.body.value.latitude,
     longitude: args.body.value.longitude,
-    timestamp: args.body.value.timestamp
+    timestamp: new Date().toISOString()
   };
 
   locations.push(location);

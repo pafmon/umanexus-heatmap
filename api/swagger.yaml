@@ -39,9 +39,6 @@ paths:
               description: "Location longitude"
               example    : -5.99407
               type       : number
-            timestamp:
-              type: string
-              format: date-time
     delete:
       summary: Register a Location in the server
       operationId: deleteLocations
