@@ -2,11 +2,13 @@ swagger: '2.0'
 info:
   description: |
     Initial version for server centric API
+    <br/>
+    <h1><a href="test">Showcase</a></h1>
+    <br/>
   version: "1.0.0"
   title: umanexus - Heatmap
   contact:
     email: pafmon@gmail.com
-host: "umanexus.herokuapp.com"
 basePath: "/api/v1"
 paths:
   /locations:
@@ -40,7 +42,12 @@ paths:
             timestamp:
               type: string
               format: date-time
-            
+    delete:
+      summary: Register a Location in the server
+      operationId: deleteLocations
+      responses:
+        200:
+          description: successful operation
   /heatmaps:
     x-swagger-router-controller : "Default"
     get:
@@ -94,5 +101,5 @@ paths:
                   description: "Location longitude (with 5 digits precision)"
                   example    : -5.99407
                   type       : number
-                intensity:
+                frequency:
                   type: integer
